@@ -25,6 +25,7 @@ a
     - False Challenge: The challenger will be forced to reveal one of their cards. The challengee must give up the revealed card and shuffle it back into the deck, then acquire a new influence card.
 
 
+
 --------------------INFLUENCE--------------------
 
 **Influnece:**

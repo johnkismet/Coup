@@ -1,4 +1,6 @@
-let currentTurn = 0
+let currentTurn = 1
+let players = 5;
+playerArray = []
 let influenceArray = [
     "Duke1", "Duke2", "Duke3",
     "Captain1", "Captain2", "Captain3",
@@ -11,9 +13,7 @@ function getInfluenceCard() {
     let len = influenceArray.length
     let choice = Math.floor(Math.random() * len) 
     let selection = influenceArray[choice]
-    if (selection.includes("Duke")) {
-        console.log("duke!")
-    }
+   
     influenceArray.splice(choice, 1)
     return selection
 } 
@@ -26,19 +26,33 @@ function Player (name) {
     this.influenceTwo = getInfluenceCard()
 }
 
-
-function Influence (players) {
-    this.players = players
-    this.nextTurn = function() {
-        if (currentTurn < this.players) {
-            currentTurn++
-        } else {
-           currentTurn = 0; 
-        }
-        console.log(currentTurn)
+function nextTurn() {
+    if (currentTurn < players) {
+        currentTurn++
+    } else {
+       currentTurn = 1; 
     }
+
+    let player = document.querySelector("#playerTurn")
+    player.innerHTML = `Player ${currentTurn}'s turn`
+}
+
+function Player (name, turn) {
+
+    this.join = function(name) {
+        if (playerArray.length < players) {
+            playerArray.push(name)
+        }
+    }
+
+    this.playerName = name
+    this.turn = turn
+    this.influenceOne = getInfluenceCard()
+    this.influenceTwo = getInfluenceCard()
     this.money = 2
-    this.faceDown = false;
+    this.faceDown1 = false;
+    this.faceDown2 = false;
+
     this.income = function() {
         this.money++
     }
@@ -49,7 +63,7 @@ function Influence (players) {
 }
 
 function Duke (players) {
-    Influence.call(this, players)
+    Player.call(this, players)
     this.dukeMoney = function() {
         console.log("Duke Money")
         this.nextTurn()
@@ -57,7 +71,7 @@ function Duke (players) {
 }
 
 function Captain (players) {
-    Influence.call(this, players)
+    Player.call(this, players)
     this.capSteal = function() {
         console.log("Captain Steal")
         this.nextTurn()
@@ -66,7 +80,7 @@ function Captain (players) {
 }
 
 function Assassin (players) {
-    Influence.call(this, players)
+    Player.call(this, players)
     this.assassinate = function() {
         console.log("Assassinate")
         this.nextTurn()
@@ -75,7 +89,7 @@ function Assassin (players) {
 }
 
 function Contessa (players) {
-    Influence.call(this, players)
+    Player.call(this, players)
     this.blockAssassin = function() {
         console.log("Block Assassin")
         this.nextTurn()
@@ -83,12 +97,14 @@ function Contessa (players) {
 }
 
 function Inquisitor (players) {
-    Influence.call(this, players)
+    Player.call(this, players)
     this.inquisite = function() {
         console.log("Inquisite")
         this.nextTurn()
     }
 }
+
+
 
 function clickHandler(event) {
 
@@ -115,13 +131,16 @@ function clickHandler(event) {
             console.log("Coup")
             break;
         case "skip":
-            console.log("Skip")
+            nextTurn()
             break;
         case "deck":
             console.log("Deck")
             break;
         case "bank":
-            console.log("Bank")
+            let player = playerArray.find(user => user.turn == currentTurn)
+            player.income()
+            console.log(player)
+            nextTurn()
             break;
         case "block":
             console.log("Block")
@@ -165,24 +184,16 @@ bank.addEventListener("click", clickHandler)
 block.addEventListener("click", clickHandler)
 // TESTS
 
-let player = new Player("John")
-let player2 = new Player("Kalen")
-let player3 = new Player("Dylan")
-let player4 = new Player("Chloe")
-let player5 = new Player("Gabbie")
-console.log(player)
-console.log(player2)
-console.log(player3)
-console.log(player4)
-console.log(player5)
+let player1 = new Player("John", 1)
+player1.join(player1)
+let player2 = new Player("Kalen", 2)
+player2.join(player2)
+let player3 = new Player("Dylan", 3)
+player3.join(player3)
+let player4 = new Player("Chloe", 4)
+player4.join(player4)
+let player5 = new Player("Gabbie", 5)
+player5.join(player5)
 
 
-// duke.dukeMoney()
-// captain.capSteal()
-// assassin.assassinate()
-// contessa.blockAssassin()
-// inquisitor.inquisite()
-// duke.dukeMoney()
-// captain.capSteal()
 
-// console.log(duke)
