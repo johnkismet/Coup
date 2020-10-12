@@ -1,5 +1,6 @@
 --------------------GAMEPLAY--------------------
-Offline or online?
+
+*Offline or online?*
 
 If online, we will need to learn how to make multiplayer games.
 
@@ -23,28 +24,28 @@ If offline, the game will have to take a slower pace where only one user can use
 
 
 --------------------INFLUENCE--------------------
-Influnece:
+**Influnece:**
 income {Take 1 coin from the bank},
 foreignAid {Take 2 coins from the bank},
 coup {Pay 7 coins and eliminate one opposing influence},
 challenge {Check if the last move completed fits with the challenged users influence.},
 skip {Skip turn}
 
-Duke:
+**Duke:**
 dukeMoney {take 3 coins from the bank},
 blockFA {Block another user from taking foreign aid}
 
-Assassin:
+**Assassin:**
 assassinate {Pay 3 coins to the bank and try to assassinate}
 
-Contessa:
+**Contessa:**
 blockAssassin {Block an assassin from eliminating your influence}
 
-Captain:
+**Captain:**
 capSteal {Take 2 coins from another player},
 block {Block capSteal}
 
-Ambassador:
+**Ambassador:**
 inquire {Draw 2 cards from the deck, choose among the drawn cards and your current cards to keep. (the player may only have the amount of influnece they had before drawing in their hand at the end of the turn)},
 block {Block capSteal}
 
