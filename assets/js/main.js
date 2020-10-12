@@ -123,6 +123,9 @@ function clickHandler(event) {
         case "bank":
             console.log("Bank")
             break;
+        case "block":
+            console.log("Block")
+            break;
         
     }
 
@@ -142,6 +145,7 @@ let inquisitor = document.querySelector("#inquisitor")
 // action buttons
 let challenge = document.querySelector("#challengeButton")
 let coup = document.querySelector("#coupButton")
+let block = document.querySelector("#block")
 let skip = document.querySelector("#skip")
 
 // middle section
@@ -158,6 +162,7 @@ coup.addEventListener("click", clickHandler)
 skip.addEventListener("click", clickHandler)
 deck.addEventListener("click", clickHandler)
 bank.addEventListener("click", clickHandler)
+block.addEventListener("click", clickHandler)
 // TESTS
 
 let player = new Player("John")
