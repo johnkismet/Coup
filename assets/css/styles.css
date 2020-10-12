@@ -1,6 +1,14 @@
 * {
     margin: 0;
     padding: 0;
+    border-radius: 10px;
+    text-align: center;
+}
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 5px;
 }
 #game {
     border: 1px solid black;

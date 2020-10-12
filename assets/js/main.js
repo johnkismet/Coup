@@ -90,6 +90,74 @@ function Inquisitor (players) {
     }
 }
 
+function clickHandler(event) {
+
+    switch (event.target.id) {
+        case "duke":
+            console.log("Duke")
+            break;
+        case "captain":
+            console.log("captain")
+            break;
+        case "assassin":
+            console.log("assassin")
+            break;
+        case "contessa":
+            console.log("contessa")
+            break;
+         case "inquisitor":
+            console.log("inquisitor")
+            break;
+        case "challengeButton":
+            console.log("Challenge")
+            break;
+        case "coupButton":
+            console.log("Coup")
+            break;
+        case "skip":
+            console.log("Skip")
+            break;
+        case "deck":
+            console.log("Deck")
+            break;
+        case "bank":
+            console.log("Bank")
+            break;
+        
+    }
+
+}
+
+
+
+// EVENT LISTENERS
+
+// influence cards
+let duke = document.querySelector("#duke")
+let captain = document.querySelector("#captain")
+let assassin = document.querySelector("#assassin")
+let contessa = document.querySelector("#contessa")
+let inquisitor = document.querySelector("#inquisitor")
+
+// action buttons
+let challenge = document.querySelector("#challengeButton")
+let coup = document.querySelector("#coupButton")
+let skip = document.querySelector("#skip")
+
+// middle section
+let deck = document.querySelector("#deck")
+let bank = document.querySelector("#bank")
+
+duke.addEventListener("click", clickHandler)
+captain.addEventListener("click", clickHandler)
+assassin.addEventListener("click", clickHandler)
+contessa.addEventListener("click", clickHandler)
+inquisitor.addEventListener("click", clickHandler)
+challenge.addEventListener("click", clickHandler)
+coup.addEventListener("click", clickHandler)
+skip.addEventListener("click", clickHandler)
+deck.addEventListener("click", clickHandler)
+bank.addEventListener("click", clickHandler)
 // TESTS
 
 let player = new Player("John")
