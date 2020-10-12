@@ -19,6 +19,23 @@
     border: 1px solid black;
     width: 90%;
     height: 100px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+}
+.player {
+    border: 1px solid black;
+    width: 10%;
+    height: 90%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.influence {
+    border: 1px solid black;
+    width: 35%;
+    height: 90%;
 }
 #middleCont {
     border: 1px solid black;
