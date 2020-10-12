@@ -25,3 +25,5 @@ The last player to still have influence – that is, a face-down character – w
 
 > (from [BoardgameGeek)](https://boardgamegeek.com/boardgame/131357/coup)
 
+***Created by John Anderson, Timothy Charboneau, and David Fidler of Kenzie Academy.***
+
