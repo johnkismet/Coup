@@ -1,5 +1,6 @@
 --------------------GAMEPLAY--------------------
-Offline or online?
+
+*Offline or online?*
 
 If online, we will need to learn how to make multiplayer games.
 
@@ -23,28 +24,48 @@ If offline, the game will have to take a slower pace where only one user can use
 
 
 --------------------INFLUENCE--------------------
-Influnece:
+
+**Influnece:**
+
 income {Take 1 coin from the bank},
+
 foreignAid {Take 2 coins from the bank},
+
 coup {Pay 7 coins and eliminate one opposing influence},
+
 challenge {Check if the last move completed fits with the challenged users influence.},
+
 skip {Skip turn}
 
-Duke:
+**Duke:**
+
 dukeMoney {take 3 coins from the bank},
+
 blockFA {Block another user from taking foreign aid}
 
-Assassin:
+**Assassin:**
+
 assassinate {Pay 3 coins to the bank and try to assassinate}
 
-Contessa:
+**Contessa:**
+
 blockAssassin {Block an assassin from eliminating your influence}
 
-Captain:
-capSteal {Take 2 coins from another player},
+**Captain:**
+
+capSteal {Take 2 coins from another player
+
 block {Block capSteal}
 
+<<<<<<< HEAD
 Inquisitor:
 inquireDeck {Draw 2 cards from the deck, choose among the drawn cards and your current cards to keep. (the player may only have the amount of influnece they had before drawing in their hand at the end of the turn)},
 inquirePlayer {Choose a user, that person must show you one card of their choosing. The inquisitor may choose to let them keep that card or put it back in the deck and receive a new card}
+=======
+**Ambassador:**
+
+inquire {Draw 2 cards from the deck, choose among the drawn cards and your current cards to keep. (the player may only have the amount of influnece they had before drawing in their hand at the end of the turn)},
+
+block {Block capSteal}
+>>>>>>> e24327793ec1e777b07dea42d6612e1611415ba2
 
