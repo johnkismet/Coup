@@ -57,15 +57,9 @@ capSteal {Take 2 coins from another player
 
 block {Block capSteal}
 
-<<<<<<< HEAD
-Inquisitor:
+**Inquisitor:**
+
 inquireDeck {Draw 2 cards from the deck, choose among the drawn cards and your current cards to keep. (the player may only have the amount of influnece they had before drawing in their hand at the end of the turn)},
+
 inquirePlayer {Choose a user, that person must show you one card of their choosing. The inquisitor may choose to let them keep that card or put it back in the deck and receive a new card}
-=======
-**Ambassador:**
-
-inquire {Draw 2 cards from the deck, choose among the drawn cards and your current cards to keep. (the player may only have the amount of influnece they had before drawing in their hand at the end of the turn)},
-
-block {Block capSteal}
->>>>>>> e24327793ec1e777b07dea42d6612e1611415ba2
 
