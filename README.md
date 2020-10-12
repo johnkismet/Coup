@@ -1,7 +1,7 @@
-A recreation of the card game Coup. This project is solely for practice and fun. This will not be monetized or hosted anywhere without permission from the owners of Coup.
+##### *A recreation of the card game Coup. This project is solely for practice and fun. This will not be monetized or featured anywhere without permission from the owners of Coup*
 
 
-You are head of a family in an Italian city-state, a city run by a weak and corrupt court. You need to manipulate, bluff and bribe your way to power. Your object is to destroy the influence of all the other families, forcing them into exile. Only one family will survive...
+## **You are head of a family in an Italian city-state, a city run by a weak and corrupt court. You need to manipulate, bluff and bribe your way to power. Your object is to destroy the influence of all the other families, forcing them into exile. Only one family will survive...**
 
 In Coup, you want to be the last player with influence in the game, with influence being represented by face-down character cards in your playing area.
 
@@ -23,5 +23,5 @@ If you do have the character in question and choose to reveal it, the opponent l
 
 The last player to still have influence – that is, a face-down character – wins the game!
 
-(from https://boardgamegeek.com/boardgame/131357/coup)
+> (from [BoardgameGeek)](https://boardgamegeek.com/boardgame/131357/coup)
 
