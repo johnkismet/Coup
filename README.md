@@ -1,4 +1,4 @@
-##### *A recreation of the card game Coup. This project is solely for practice and fun. This will not be monetized or hosted anywhere without permission from the owners of Coup*
+##### *A recreation of the card game Coup. This project is solely for practice and fun. This will not be monetized or featured anywhere without permission from the owners of Coup*
 
 
 ## **You are head of a family in an Italian city-state, a city run by a weak and corrupt court. You need to manipulate, bluff and bribe your way to power. Your object is to destroy the influence of all the other families, forcing them into exile. Only one family will survive...**
