@@ -1,0 +1,122 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+#game {
+    border: 1px solid black;
+    width: 190vh;
+    height: 98vh;
+    margin: auto;
+    display: flex;
+    flex-flow: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+#playerTurn {
+
+}
+#playerBox {
+    border: 1px solid black;
+    width: 90%;
+    height: 100px;
+}
+#middleCont {
+    border: 1px solid black;
+    width: 90%;
+    height: 200px;
+    margin: 50px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+#deck {
+    border: 1px solid black;
+    width: 100px;
+    height: 100px;
+}
+#bank {
+    border: 1px solid black;
+    width: 100px;
+    height: 100px;
+}
+#bottomCont {
+    border: 1px solid black;
+    width: 90%;
+    height: 300px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+#coupChallenge {
+    border: 1px solid black;
+    width: 20%;
+    height: 90%;
+    display: flex;
+    flex-flow: column;
+    justify-content: space-around;
+    align-items: center;
+}
+#challengeButton {
+    border: 1px solid black;
+    width: 90%;
+    height: 70px;
+    border-radius: 20px;
+}
+#coupButton {
+    border: 1px solid black;
+    width: 90%;
+    height: 70px;
+    border-radius: 20px;
+}
+#influenceBoard {
+    border: 1px solid black;
+    width: 50%;
+    height: 90%;
+    display: flex;
+    flex-flow: column;
+    justify-content: space-around;
+    align-items: center;
+}
+#influenceCards {
+    border: 1px solid black;
+    width: 90%;
+    height: 60%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+#duke {
+    border: 1px solid black;
+    width: 80px;
+    height: 90%;
+}
+#captain {
+    border: 1px solid black;
+    width: 80px;
+    height: 90%;
+}
+#assassin {
+    border: 1px solid black;
+    width: 80px;
+    height: 90%;
+}
+#contessa {
+    border: 1px solid black;
+    width: 80px;
+    height: 90%;
+}
+#inquisitor {
+    border: 1px solid black;
+    width: 80px;
+    height: 90%;
+}
+#skip {
+    border: 1px solid black;
+    width: 30%;
+    height: 20%;
+}
+#money {
+    border: 1px solid black;
+    width: 20%;
+    height: 90%;
+}
