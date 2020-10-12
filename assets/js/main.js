@@ -11,25 +11,21 @@ function getInfluenceCard() {
     let len = influenceArray.length
     let choice = Math.floor(Math.random() * len) 
     let selection = influenceArray[choice]
+    if (selection.includes("Duke")) {
+        console.log("duke!")
+    }
     influenceArray.splice(choice, 1)
     return selection
 } 
 
 
 
-function Player () {
+function Player (name) {
+    this.playerName = name
     this.influenceOne = getInfluenceCard()
     this.influenceTwo = getInfluenceCard()
-
 }
-let player = new Player()
-let player2 = new Player()
-let player3 = new Player()
-let player4 = new Player()
-console.log(player)
-console.log(player2)
-console.log(player3)
-console.log(player4)
+
 
 function Influence (players) {
     this.players = players
@@ -96,11 +92,16 @@ function Inquisitor (players) {
 
 // TESTS
 
-let duke = new Duke(5)
-let captain = new Captain(5)
-let assassin = new Assassin(5)
-let contessa = new Contessa(5)
-let inquisitor = new Inquisitor(5)
+let player = new Player("John")
+let player2 = new Player("Kalen")
+let player3 = new Player("Dylan")
+let player4 = new Player("Chloe")
+let player5 = new Player("Gabbie")
+console.log(player)
+console.log(player2)
+console.log(player3)
+console.log(player4)
+console.log(player5)
 
 
 // duke.dukeMoney()
