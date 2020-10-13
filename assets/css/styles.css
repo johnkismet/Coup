@@ -34,7 +34,7 @@ body {
 }
 .player {
     border: 1px solid black;
-    width: 10%;
+    width: 20%;
     height: 90%;
     display: flex;
     justify-content: space-around;

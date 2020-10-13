@@ -104,13 +104,40 @@ function Inquisitor (players) {
     }
 }
 
+function money() {
+    let mon = document.querySelector("#money")
+    let p1Text = document.querySelector("#p1")
+    let p2Text = document.querySelector("#p2")
+    let p3Text = document.querySelector("#p3")
+    let p4Text = document.querySelector("#p4")
+    let p5Text = document.querySelector("#p5")
 
+    let p1 = playerArray.find(user => user.turn == 1)
+    let p2 = playerArray.find(user => user.turn == 2)
+    let p3 = playerArray.find(user => user.turn == 3)
+    let p4 = playerArray.find(user => user.turn == 4)
+    let p5 = playerArray.find(user => user.turn == 5)
+
+    let player = playerArray.find(user => user.turn == currentTurn)
+
+    mon.innerHTML = `$${player.money}`
+    p1Text.innerHTML = `$${p1.money}`
+    p2Text.innerHTML = `$${p2.money}`
+    p3Text.innerHTML = `$${p3.money}`
+    p4Text.innerHTML = `$${p4.money}`
+    p5Text.innerHTML = `$${p5.money}`
+
+}
+
+let dukeMode = false;
 
 function clickHandler(event) {
+    
 
     switch (event.target.id) {
         case "duke":
             console.log("Duke")
+            dukeMode = true;
             break;
         case "captain":
             console.log("captain")
@@ -137,9 +164,16 @@ function clickHandler(event) {
             console.log("Deck")
             break;
         case "bank":
+            console.log(dukeMode)
             let player = playerArray.find(user => user.turn == currentTurn)
+            if (dukeMode === true) {
+                player.money += 3
+                money()
+                dukeMode = false;
+            } else {
             player.income()
-            console.log(player)
+            money()
+            }
             nextTurn()
             break;
         case "block":
