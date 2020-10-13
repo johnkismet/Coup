@@ -177,12 +177,14 @@ function coup(event) {
     updateMoney();
 
     nextTurn();
-  } else if (coupMode == true && assassinMode == true) {
-    if (event.target.innerText === "Contessa1" || "Contessa2" || "Contessa3") {
+  } else if (coupMode == true && assassinMode == true && player.money >= 3) {
+
+    if (event.target.innerText === "Contessa1" || event.target.innerText === "Contessa2" || event.target.innerText === "Contessa3") {
+        console.log(event.target.innerText)
       player.money -= 3;
       updateMoney();
       nextTurn();
-      console.log("You can't coup");
+      console.log("You tried to assassinate a contessa");
       return;
     }
     switch (event.target.id) {
@@ -306,6 +308,7 @@ function clickHandler(event) {
     let p4 = document.querySelector("#four")
     let p5 = document.querySelector("#five")
     
+    // only click the bank if dukeMode == true
    if (dukeMode === true) {
        switch (event.target.id) {
            case "bank":
@@ -315,40 +318,32 @@ function clickHandler(event) {
             break;
        }
    }
-   if (assassinMode === true) {
-  if (dukeMode === true) {
-    switch (event.target.id) {
-      case "bank":
-        break;
-      default:
-        return;
-        break;
-    }
-  }
+   //only click players if assassinMode == true
   if (assassinMode === true) {
     switch (event.currentTarget.id) {
       case "playerBox":
         break;
       default:
-        return;
-        break;
+      console.log("You must assassinate");
+      return;
     }
   }
 
   // if player has >= $10, they MUST coup
   let player = playerArray.find((user) => user.turn === currentTurn);
 
-  let p1 = document.querySelector("#one");
-  let p2 = document.querySelector("#two");
-  let p3 = document.querySelector("#three");
-  let p4 = document.querySelector("#four");
-  let p5 = document.querySelector("#five");
-
-  if (assassinMode == true) {
-    console.log("You must assassinate");
-    return;
-  }
   if (player.money >= 10) {
+    switch (event.target.id) {
+        case "coupButton":
+            coupMode = true; 
+            break;
+        default:
+            console.log("You must click the coup button")
+            document.querySelector("#coupButton").style.background = "red";
+            return
+            break;
+     }
+  }
     switch (event.target.id) {
         case "duke":
             if (gameStart == false) {
@@ -528,191 +523,9 @@ function clickHandler(event) {
       case "coupButton":
         coupMode = true;
         break;
-      default:
-        console.log("You must click the coup button");
-        document.querySelector("#coupButton").style.background = "red";
-        return;
-        break;
     }
   }
 
-  switch (event.target.id) {
-    case "duke":
-      if (gameStart == false) {
-        return;
-      }
-
-      if (coupMode == true) {
-        return;
-      }
-
-      event.target.style.border = "1px dashed red";
-      console.log("Duke Mode");
-      dukeMode = true;
-      break;
-    case "captain":
-      if (gameStart == false) {
-        return;
-      }
-
-      if (coupMode == true) {
-        return;
-      }
-
-      event.target.style.border = "1px dashed red";
-
-    
-
-      p1.addEventListener("click", capSteal);
-      p2.addEventListener("click", capSteal);
-      p3.addEventListener("click", capSteal);
-      p4.addEventListener("click", capSteal);
-      p5.addEventListener("click", capSteal);
-      break;
-    case "assassin":
-      if (gameStart == false) {
-        return;
-      }
-
-      if (coupMode == true) {
-        return;
-      }
-
-      event.target.style.border = "1px dashed red";
-      coupMode = true;
-      assassinMode = true;
-
-      document.querySelector("#one").addEventListener("click", coup);
-      document.querySelector("#two").addEventListener("click", coup);
-      document.querySelector("#three").addEventListener("click", coup);
-      document.querySelector("#four").addEventListener("click", coup);
-      document.querySelector("#five").addEventListener("click", coup);
-
-      //this block below throws a reference error
-      //   p1.addEventListener("click", coup);
-      //   p2.addEventListener("click", coup);
-      //   p3.addEventListener("click", coup);
-      //   p4.addEventListener("click", coup);
-      //   p5.addEventListener("click", coup);
-
-      console.log("Assassin Mode");
-      break;
-    case "contessa":
-      if (gameStart == false) {
-        return;
-      }
-
-      if (coupMode == true) {
-        return;
-      }
-      event.target.style.border = "1px dashed red";
-      console.log("contessa");
-      break;
-    case "inquisitor":
-      if (gameStart == false) {
-        return;
-      }
-
-      if (coupMode == true) {
-        return;
-      }
-
-      console.log("inquisitor");
-      break;
-    case "challengeButton":
-      if (gameStart == false) {
-        return;
-      }
-
-      if (coupMode == true) {
-        return;
-      }
-
-      event.target.style.border = "1px dashed red";
-      console.log("Challenge");
-      break;
-    case "coupButton":
-      if (gameStart == false) {
-        return;
-      }
-
-      event.target.style.border = "1px dashed red";
-      if (player.money < 7) {
-        console.log("You don't have enough money to coup");
-        return;
-      }
-
-      console.log("Coup Mode");
-      coupMode = true;
-
-      p1.addEventListener("click", coup);
-      p2.addEventListener("click", coup);
-      p3.addEventListener("click", coup);
-      p4.addEventListener("click", coup);
-      p5.addEventListener("click", coup);
-
-      break;
-    case "skip":
-      if (gameStart == false) {
-        return;
-      }
-
-      if (coupMode == true) {
-        return;
-      }
-
-      nextTurn();
-      break;
-    case "deck":
-      if (gameStart == false) {
-        document.querySelector("#deckState").innerHTML = "Deck";
-        console.log("Game start!");
-        let d1 = document.querySelector("#d1");
-        let d2 = document.querySelector("#d2");
-        let d3 = document.querySelector("#d3");
-
-        d1.innerHTML = influenceArray[0];
-        d2.innerHTML = influenceArray[1];
-        d3.innerHTML = influenceArray[2];
-
-        setInfluence();
-        gameStart = true;
-      }
-
-      if (coupMode == true) {
-        return;
-      }
-
-      break;
-    case "bank":
-      if (gameStart == false) {
-        return;
-      }
-
-      if (dukeMode === true) {
-        player.money += 3;
-        updateMoney();
-        dukeMode = false;
-      } else {
-        player.income();
-        updateMoney();
-      }
-
-      nextTurn();
-      break;
-    case "block":
-      if (gameStart == false) {
-        return;
-      }
-
-      if (coupMode == true) {
-        return;
-      }
-
-      console.log("Block");
-      break;
-  }
-}
 
 // EVENT LISTENERS
 
