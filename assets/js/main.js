@@ -306,6 +306,12 @@ function capSteal(event) {
 }
 
 function clickHandler(event) {
+
+    let p1 = document.querySelector("#one")
+    let p2 = document.querySelector("#two")
+    let p3 = document.querySelector("#three")
+    let p4 = document.querySelector("#four")
+    let p5 = document.querySelector("#five")
     
    if (dukeMode === true) {
        switch (event.target.id) {
@@ -370,12 +376,6 @@ function clickHandler(event) {
             }
 
             event.target.style.border = "1px dashed red"
-
-            let p1 = document.querySelector("#one")
-            let p2 = document.querySelector("#two")
-            let p3 = document.querySelector("#three")
-            let p4 = document.querySelector("#four")
-            let p5 = document.querySelector("#five")
         
             p1.addEventListener("click", capSteal)
             p2.addEventListener("click", capSteal)
@@ -392,6 +392,11 @@ function clickHandler(event) {
                 return
             }
             
+            if (player.money < 3) {
+                console.log("You don't have enough money to assassinate!")
+                return;
+            }
+
             event.target.style.border = "1px dashed red"
             coupMode = true;
             assassinMode = true
