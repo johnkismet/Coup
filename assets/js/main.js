@@ -85,6 +85,11 @@ function setInfluence() {
     let p4 = playerArray.find(user => user.turn == 4) 
     let p5 = playerArray.find(user => user.turn == 5) 
 
+
+    // d1.innerHTML = "asdas"
+    // d2.innerHTML = influenceArray[1]
+    // d3.innerHTML = influenceArray[2]
+
     let p11 = document.querySelector("#p1-1")
     let p12 = document.querySelector("#p1-2")
 
@@ -96,7 +101,7 @@ function setInfluence() {
 
     let p41 = document.querySelector("#p4-1")
     let p42 = document.querySelector("#p4-2")
-
+1
     
     let p51 = document.querySelector("#p5-1")
     let p52 = document.querySelector("#p5-2")
@@ -470,8 +475,16 @@ function clickHandler(event) {
         case "deck":
             
             if (gameStart == false) {
-                document.querySelector("#deck").innerHTML = "Deck"
+                document.querySelector("#deckState").innerHTML = "Deck"
                 console.log("Game start!")
+                let d1 = document.querySelector("#d1")
+                let d2 = document.querySelector("#d2")
+                let d3 = document.querySelector("#d3")
+    
+                d1.innerHTML = influenceArray[0]
+                d2.innerHTML = influenceArray[1]
+                d3.innerHTML = influenceArray[2]
+
                 setInfluence()
                 gameStart = true;
             }
