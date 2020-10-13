@@ -1,5 +1,6 @@
 let currentTurn = 1
 let players = 5;
+let gameStart = false;
 playerArray = []
 let influenceArray = [
     "Duke1", "Duke2", "Duke3",
@@ -104,7 +105,7 @@ function Inquisitor (players) {
     }
 }
 
-function money() {
+function updateMoney() {
     let mon = document.querySelector("#money")
     let p1Text = document.querySelector("#p1")
     let p2Text = document.querySelector("#p2")
@@ -129,6 +130,46 @@ function money() {
 
 }
 
+function setInfluence() {
+    let p1 = playerArray.find(user => user.turn == 1) 
+    let p2 = playerArray.find(user => user.turn == 2) 
+    let p3 = playerArray.find(user => user.turn == 3) 
+    let p4 = playerArray.find(user => user.turn == 4) 
+    let p5 = playerArray.find(user => user.turn == 5) 
+
+    let p11 = document.querySelector("#p1-1")
+    let p12 = document.querySelector("#p1-2")
+
+    let p21 = document.querySelector("#p2-1")
+    let p22 = document.querySelector("#p2-2")
+
+    let p31 = document.querySelector("#p3-1")
+    let p32 = document.querySelector("#p3-2")
+
+    let p41 = document.querySelector("#p4-1")
+    let p42 = document.querySelector("#p4-2")
+
+    
+    let p51 = document.querySelector("#p5-1")
+    let p52 = document.querySelector("#p5-2")
+
+    p11.innerHTML = p1.influenceOne
+    p12.innerHTML = p1.influenceTwo
+
+    p21.innerHTML = p2.influenceOne
+    p22.innerHTML = p2.influenceTwo
+
+    p31.innerHTML = p3.influenceOne
+    p32.innerHTML = p3.influenceTwo
+
+    p41.innerHTML = p4.influenceOne
+    p42.innerHTML = p4.influenceTwo
+
+    p51.innerHTML = p5.influenceOne
+    p52.innerHTML = p5.influenceTwo
+
+}
+
 let dukeMode = false;
 
 function clickHandler(event) {
@@ -136,47 +177,85 @@ function clickHandler(event) {
 
     switch (event.target.id) {
         case "duke":
+            if (gameStart == false) {
+                return
+            }
             console.log("Duke")
             dukeMode = true;
             break;
         case "captain":
+            if (gameStart == false) {
+                return
+            }
             console.log("captain")
             break;
         case "assassin":
+            if (gameStart == false) {
+                return
+            }
             console.log("assassin")
             break;
         case "contessa":
+            if (gameStart == false) {
+                return
+            }
             console.log("contessa")
             break;
          case "inquisitor":
+            if (gameStart == false) {
+                return
+            }
             console.log("inquisitor")
             break;
         case "challengeButton":
+            if (gameStart == false) {
+                return
+            }
             console.log("Challenge")
             break;
         case "coupButton":
+            if (gameStart == false) {
+                return
+            }
             console.log("Coup")
             break;
         case "skip":
+            if (gameStart == false) {
+                return
+            }
             nextTurn()
             break;
         case "deck":
-            console.log("Deck")
+            
+            if (gameStart == false) {
+                document.querySelector("#deck").innerHTML = "Deck"
+                console.log("Game start!")
+                setInfluence()
+                gameStart = true;
+            }
+
+
             break;
         case "bank":
+            if (gameStart == false) {
+                return
+            }
             console.log(dukeMode)
             let player = playerArray.find(user => user.turn == currentTurn)
             if (dukeMode === true) {
                 player.money += 3
-                money()
+                updateMoney()
                 dukeMode = false;
             } else {
             player.income()
-            money()
+            updateMoney()
             }
             nextTurn()
             break;
         case "block":
+            if (gameStart == false) {
+                return
+            }
             console.log("Block")
             break;
         

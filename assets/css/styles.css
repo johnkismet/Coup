@@ -34,7 +34,7 @@ body {
 }
 .player {
     border: 1px solid black;
-    width: 20%;
+    width: 16%;
     height: 90%;
     display: flex;
     justify-content: space-around;
@@ -44,6 +44,18 @@ body {
     border: 1px solid black;
     width: 35%;
     height: 90%;
+    font-size: 0.6rem;
+    font-weight: 900;
+}
+#playerNames {
+    margin: 10px;
+    border: 1px solid rgba(0, 0, 0, 0.267);
+    width: 90%;
+    height: 5%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
 }
 #middleCont {
     border: 1px solid black;
