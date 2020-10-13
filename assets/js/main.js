@@ -3,6 +3,7 @@ let players = 5;
 let gameStart = false;
 let coupMode = false;
 let dukeMode = false;
+let assassinMode = false;
 
 
 
@@ -226,7 +227,58 @@ function coup(event) {
     updateMoney()
 
     nextTurn()
-    } else {
+    } else if (coupMode == true && assassinMode == true) {
+
+        switch (event.target.id) {
+
+            case "p1-1":
+                event.target.style.background = "red"
+                player1.faceDown1 = true;
+                break;
+            case "p1-2":
+                event.target.style.background = "red"
+                player1.faceDown2 = true;
+                break;
+    
+            case "p2-1":
+                event.target.style.background = "red"
+                player2.faceDown1 = true;
+                break;
+            case "p2-2":
+                event.target.style.background = "red"
+                player2.faceDown2 = true;
+                break;
+    
+            case "p3-1":
+                event.target.style.background = "red"
+                player3.faceDown1 = true;
+                break;
+            case "p3-2":
+                event.target.style.background = "red"
+                player3.faceDown2 = true;
+                break;
+    
+            case "p4-1":
+                event.target.style.background = "red"
+                player4.faceDown1 = true;
+                break;
+            case "p4-2":
+                event.target.style.background = "red"
+                player4.faceDown2 = true;
+                break;
+            case "p5-1":
+                event.target.style.background = "red"
+                player5.faceDown1 = true;
+                break;
+            case "p5-2":
+                event.target.style.background = "red"
+                player5.faceDown2 = true;
+                break;
+        } 
+        player.money -= 3
+        updateMoney()
+        nextTurn()
+    }else {
         console.log("You can't coup")
     }
 
@@ -240,18 +292,49 @@ function nextTurn() {
     }
     dukeMode = false;
     coupMode = false;
+    assassinMode = false;
 
 
     let player = document.querySelector("#playerTurn")
     player.innerHTML = `Player ${currentTurn}'s turn`
+
+
+    document.querySelector("#duke").style.border = ""
+    document.querySelector("#captain").style.border = ""
+    document.querySelector("#assassin").style.border = ""
+    document.querySelector("#contessa").style.border = ""
+    document.querySelector("#inquisitor").style.border = ""
 }
 
 
 function clickHandler(event) {
     
+   if (dukeMode === true) {
+       switch (event.target.id) {
+           case "bank":
+               break;
+            default: 
+            return;
+            break;
+       }
+   }
+   if (assassinMode === true) {
+    switch (event.currentTarget.id) {
+        case "playerBox":
+            break;
+         default: 
+         return;
+         break;
+    }
+}
+
      // if player has >= $10, they MUST coup 
      let player = playerArray.find(user => user.turn === currentTurn)
 
+     if (assassinMode == true) {
+         console.log("You must assassinate")
+         return;
+     }
      if (player.money >= 10) {
          switch (event.target.id) {
             case "coupButton":
@@ -274,7 +357,8 @@ function clickHandler(event) {
             if (coupMode == true) {
                 return
             }
-
+            
+            event.target.style.border = "1px dashed red"
             console.log("Duke Mode")
             dukeMode = true;
             break;
@@ -287,6 +371,7 @@ function clickHandler(event) {
                 return
             }
 
+            event.target.style.border = "1px dashed red"
             console.log("captain")
             break;
         case "assassin":
@@ -297,8 +382,18 @@ function clickHandler(event) {
             if (coupMode == true) {
                 return
             }
+            
+            event.target.style.border = "1px dashed red"
+            coupMode = true;
+            assassinMode = true
 
-            console.log("assassin")
+            p1.addEventListener("click", coup)
+            p2.addEventListener("click", coup)
+            p3.addEventListener("click", coup)
+            p4.addEventListener("click", coup)
+            p5.addEventListener("click", coup)
+
+            console.log("Assassin Mode")
             break;
         case "contessa":
             if (gameStart == false) {
@@ -308,7 +403,7 @@ function clickHandler(event) {
             if (coupMode == true) {
                 return
             }
-
+            event.target.style.border = "1px dashed red"
             console.log("contessa")
             break;
          case "inquisitor":
@@ -331,6 +426,7 @@ function clickHandler(event) {
                 return
             }
 
+            event.target.style.border = "1px dashed red"
             console.log("Challenge")
             break;
         case "coupButton":
@@ -339,6 +435,7 @@ function clickHandler(event) {
                 return
             }
 
+            event.target.style.border = "1px dashed red"
             if (player.money < 7) {
                 console.log("You don't have enough money to coup")
                 return;
