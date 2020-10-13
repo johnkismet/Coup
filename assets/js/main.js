@@ -221,7 +221,7 @@ function coup(event) {
 
             
     }
-
+    document.querySelector("#coupButton").style.background = ""
     player.money -= 7
     updateMoney()
 
@@ -259,6 +259,7 @@ function clickHandler(event) {
                 break;
             default:
                 console.log("You must click the coup button")
+                document.querySelector("#coupButton").style.background = "red";
                 return
                 break;
          }
