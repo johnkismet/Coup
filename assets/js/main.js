@@ -299,7 +299,6 @@ function capSteal(event) {
 }
 
 function clickHandler(event) {
-<<<<<<< HEAD
 
     let p1 = document.querySelector("#one")
     let p2 = document.querySelector("#two")
@@ -317,7 +316,6 @@ function clickHandler(event) {
        }
    }
    if (assassinMode === true) {
-=======
   if (dukeMode === true) {
     switch (event.target.id) {
       case "bank":
@@ -328,7 +326,6 @@ function clickHandler(event) {
     }
   }
   if (assassinMode === true) {
->>>>>>> 23d6fc86e98f5e906cc86353e04a1f76d12946b8
     switch (event.currentTarget.id) {
       case "playerBox":
         break;
@@ -341,13 +338,18 @@ function clickHandler(event) {
   // if player has >= $10, they MUST coup
   let player = playerArray.find((user) => user.turn === currentTurn);
 
+  let p1 = document.querySelector("#one");
+  let p2 = document.querySelector("#two");
+  let p3 = document.querySelector("#three");
+  let p4 = document.querySelector("#four");
+  let p5 = document.querySelector("#five");
+
   if (assassinMode == true) {
     console.log("You must assassinate");
     return;
   }
   if (player.money >= 10) {
     switch (event.target.id) {
-<<<<<<< HEAD
         case "duke":
             if (gameStart == false) {
                 return
@@ -523,7 +525,6 @@ function clickHandler(event) {
             console.log("Block")
             break;
         
-=======
       case "coupButton":
         coupMode = true;
         break;
@@ -532,7 +533,6 @@ function clickHandler(event) {
         document.querySelector("#coupButton").style.background = "red";
         return;
         break;
->>>>>>> 23d6fc86e98f5e906cc86353e04a1f76d12946b8
     }
   }
 
@@ -561,11 +561,7 @@ function clickHandler(event) {
 
       event.target.style.border = "1px dashed red";
 
-      let p1 = document.querySelector("#one");
-      let p2 = document.querySelector("#two");
-      let p3 = document.querySelector("#three");
-      let p4 = document.querySelector("#four");
-      let p5 = document.querySelector("#five");
+    
 
       p1.addEventListener("click", capSteal);
       p2.addEventListener("click", capSteal);
@@ -737,12 +733,12 @@ let skip = document.querySelector("#skip");
 let deck = document.querySelector("#deck");
 let bank = document.querySelector("#bank");
 
-// players
-let p1 = document.querySelector("#one");
-let p2 = document.querySelector("#two");
-let p3 = document.querySelector("#three");
-let p4 = document.querySelector("#four");
-let p5 = document.querySelector("#five");
+// // players
+// let p1 = document.querySelector("#one");
+// let p2 = document.querySelector("#two");
+// let p3 = document.querySelector("#three");
+// let p4 = document.querySelector("#four");
+// let p5 = document.querySelector("#five");
 
 duke.addEventListener("click", clickHandler);
 captain.addEventListener("click", clickHandler);
