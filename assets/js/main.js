@@ -4,6 +4,8 @@ let gameStart = false;
 let coupMode = false;
 let dukeMode = false;
 
+
+
 playerArray = []
 let influenceArray = [
     "Duke1", "Duke2", "Duke3",
@@ -12,6 +14,8 @@ let influenceArray = [
     "Contessa1", "Contessa2", "Contessa3",
     "Inquisitor1", "Inquisitor2", "Inquisitor3"
 ]
+
+
 
 function getInfluenceCard() {
     let len = influenceArray.length
@@ -215,7 +219,11 @@ function coup(event) {
             player5.faceDown2 = true;
             break;
 
+            
     }
+
+    player.money -= 7
+    updateMoney()
 
     nextTurn()
     } else {
@@ -241,49 +249,100 @@ function nextTurn() {
 
 function clickHandler(event) {
     
+     // if player has >= $10, they MUST coup 
+     let player = playerArray.find(user => user.turn === currentTurn)
+
+     if (player.money >= 10) {
+         switch (event.target.id) {
+            case "coupButton":
+                coupMode = true; 
+                break;
+            default:
+                console.log("You must click the coup button")
+                return
+                break;
+         }
+     }
 
     switch (event.target.id) {
         case "duke":
             if (gameStart == false) {
                 return
             }
-            console.log("Duke")
+
+            if (coupMode == true) {
+                return
+            }
+
+            console.log("Duke Mode")
             dukeMode = true;
             break;
         case "captain":
             if (gameStart == false) {
                 return
             }
+
+            if (coupMode == true) {
+                return
+            }
+
             console.log("captain")
             break;
         case "assassin":
             if (gameStart == false) {
                 return
             }
+
+            if (coupMode == true) {
+                return
+            }
+
             console.log("assassin")
             break;
         case "contessa":
             if (gameStart == false) {
                 return
             }
+
+            if (coupMode == true) {
+                return
+            }
+
             console.log("contessa")
             break;
          case "inquisitor":
             if (gameStart == false) {
                 return
             }
+
+            if (coupMode == true) {
+                return
+            }
+
             console.log("inquisitor")
             break;
         case "challengeButton":
             if (gameStart == false) {
                 return
             }
+
+            if (coupMode == true) {
+                return
+            }
+
             console.log("Challenge")
             break;
         case "coupButton":
+
             if (gameStart == false) {
                 return
             }
+
+            if (player.money < 7) {
+                console.log("You don't have enough money to coup")
+                return;
+            }
+
             console.log("Coup Mode")
             coupMode = true
            
@@ -299,6 +358,11 @@ function clickHandler(event) {
             if (gameStart == false) {
                 return
             }
+
+            if (coupMode == true) {
+                return
+            }
+
             nextTurn()
             break;
         case "deck":
@@ -310,14 +374,16 @@ function clickHandler(event) {
                 gameStart = true;
             }
 
+            if (coupMode == true) {
+                return
+            }
 
             break;
         case "bank":
             if (gameStart == false) {
                 return
             }
-            console.log(dukeMode)
-            let player = playerArray.find(user => user.turn == currentTurn)
+            
             if (dukeMode === true) {
                 player.money += 3
                 updateMoney()
@@ -326,12 +392,19 @@ function clickHandler(event) {
             player.income()
             updateMoney()
             }
+           
+
             nextTurn()
             break;
         case "block":
             if (gameStart == false) {
                 return
             }
+
+            if (coupMode == true) {
+                return
+            }
+
             console.log("Block")
             break;
         
@@ -390,6 +463,4 @@ let player4 = new Player("Chloe", 4)
 player4.join(player4)
 let player5 = new Player("Gabbie", 5)
 player5.join(player5)
-
-
 
