@@ -1,6 +1,9 @@
 let currentTurn = 1
 let players = 5;
 let gameStart = false;
+let coupMode = false;
+let dukeMode = false;
+
 playerArray = []
 let influenceArray = [
     "Duke1", "Duke2", "Duke3",
@@ -25,17 +28,6 @@ function Player (name) {
     this.playerName = name
     this.influenceOne = getInfluenceCard()
     this.influenceTwo = getInfluenceCard()
-}
-
-function nextTurn() {
-    if (currentTurn < players) {
-        currentTurn++
-    } else {
-       currentTurn = 1; 
-    }
-
-    let player = document.querySelector("#playerTurn")
-    player.innerHTML = `Player ${currentTurn}'s turn`
 }
 
 function Player (name, turn) {
@@ -170,7 +162,82 @@ function setInfluence() {
 
 }
 
-let dukeMode = false;
+function coup(event) {
+
+    let player = playerArray.find(user => user.turn === currentTurn)
+
+
+    if (coupMode === true && player.money >= 7) {
+        
+    switch (event.target.id) {
+
+        case "p1-1":
+            event.target.style.background = "red"
+            player1.faceDown1 = true;
+            break;
+        case "p1-2":
+            event.target.style.background = "red"
+            player1.faceDown2 = true;
+            break;
+
+        case "p2-1":
+            event.target.style.background = "red"
+            player2.faceDown1 = true;
+            break;
+        case "p2-2":
+            event.target.style.background = "red"
+            player2.faceDown2 = true;
+            break;
+
+        case "p3-1":
+            event.target.style.background = "red"
+            player3.faceDown1 = true;
+            break;
+        case "p3-2":
+            event.target.style.background = "red"
+            player3.faceDown2 = true;
+            break;
+
+        case "p4-1":
+            event.target.style.background = "red"
+            player4.faceDown1 = true;
+            break;
+        case "p4-2":
+            event.target.style.background = "red"
+            player4.faceDown2 = true;
+            break;
+        case "p5-1":
+            event.target.style.background = "red"
+            player5.faceDown1 = true;
+            break;
+        case "p5-2":
+            event.target.style.background = "red"
+            player5.faceDown2 = true;
+            break;
+
+    }
+
+    nextTurn()
+    } else {
+        console.log("You can't coup")
+    }
+
+}
+
+function nextTurn() {
+    if (currentTurn < players) {
+        currentTurn++
+    } else {
+       currentTurn = 1; 
+    }
+    dukeMode = false;
+    coupMode = false;
+
+
+    let player = document.querySelector("#playerTurn")
+    player.innerHTML = `Player ${currentTurn}'s turn`
+}
+
 
 function clickHandler(event) {
     
@@ -217,7 +284,16 @@ function clickHandler(event) {
             if (gameStart == false) {
                 return
             }
-            console.log("Coup")
+            console.log("Coup Mode")
+            coupMode = true
+           
+
+            p1.addEventListener("click", coup)
+            p2.addEventListener("click", coup)
+            p3.addEventListener("click", coup)
+            p4.addEventListener("click", coup)
+            p5.addEventListener("click", coup)
+            
             break;
         case "skip":
             if (gameStart == false) {
@@ -276,7 +352,7 @@ let inquisitor = document.querySelector("#inquisitor")
 
 // action buttons
 let challenge = document.querySelector("#challengeButton")
-let coup = document.querySelector("#coupButton")
+let coupBtn = document.querySelector("#coupButton")
 let block = document.querySelector("#block")
 let skip = document.querySelector("#skip")
 
@@ -284,13 +360,20 @@ let skip = document.querySelector("#skip")
 let deck = document.querySelector("#deck")
 let bank = document.querySelector("#bank")
 
+ // players
+ let p1 = document.querySelector("#one")
+ let p2 = document.querySelector("#two")
+ let p3 = document.querySelector("#three")
+ let p4 = document.querySelector("#four")
+ let p5 = document.querySelector("#five")
+
 duke.addEventListener("click", clickHandler)
 captain.addEventListener("click", clickHandler)
 assassin.addEventListener("click", clickHandler)
 contessa.addEventListener("click", clickHandler)
 inquisitor.addEventListener("click", clickHandler)
 challenge.addEventListener("click", clickHandler)
-coup.addEventListener("click", clickHandler)
+coupBtn.addEventListener("click", clickHandler)
 skip.addEventListener("click", clickHandler)
 deck.addEventListener("click", clickHandler)
 bank.addEventListener("click", clickHandler)
