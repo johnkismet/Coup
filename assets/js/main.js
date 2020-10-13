@@ -27,14 +27,6 @@ function getInfluenceCard() {
     return selection
 } 
 
-
-
-function Player (name) {
-    this.playerName = name
-    this.influenceOne = getInfluenceCard()
-    this.influenceTwo = getInfluenceCard()
-}
-
 function Player (name, turn) {
 
     this.join = function(name) {
@@ -60,47 +52,6 @@ function Player (name, turn) {
     
 }
 
-function Duke (players) {
-    Player.call(this, players)
-    this.dukeMoney = function() {
-        console.log("Duke Money")
-        this.nextTurn()
-    }
-}
-
-function Captain (players) {
-    Player.call(this, players)
-    this.capSteal = function() {
-        console.log("Captain Steal")
-        this.nextTurn()
-
-    }
-}
-
-function Assassin (players) {
-    Player.call(this, players)
-    this.assassinate = function() {
-        console.log("Assassinate")
-        this.nextTurn()
-
-    }
-}
-
-function Contessa (players) {
-    Player.call(this, players)
-    this.blockAssassin = function() {
-        console.log("Block Assassin")
-        this.nextTurn()
-    }
-}
-
-function Inquisitor (players) {
-    Player.call(this, players)
-    this.inquisite = function() {
-        console.log("Inquisite")
-        this.nextTurn()
-    }
-}
 
 function updateMoney() {
     let mon = document.querySelector("#money")
@@ -306,6 +257,48 @@ function nextTurn() {
     document.querySelector("#inquisitor").style.border = ""
 }
 
+function capSteal(event) {
+
+    let player = playerArray.find(user => user.turn === currentTurn)
+    
+    switch (event.currentTarget.id) {
+        case "one":
+            player1.money -= 2
+            player.money += 2
+            updateMoney()
+            nextTurn()
+            break;
+        case "two":
+            player2.money -= 2
+            player.money += 2
+            updateMoney()
+            nextTurn()
+            break;
+        case "three":
+            player3.money -= 2
+            player.money += 2
+            updateMoney()
+            nextTurn()
+            break;
+        case "four":
+            player4.money -= 2
+            player.money += 2
+            updateMoney()
+            nextTurn()
+            break;
+        case "five":
+            player5.money -= 2
+            player.money += 2
+            updateMoney()
+            nextTurn()
+            break;
+        default:
+            console.log("you must choose a player")
+            return;
+    }
+
+
+}
 
 function clickHandler(event) {
     
@@ -372,7 +365,18 @@ function clickHandler(event) {
             }
 
             event.target.style.border = "1px dashed red"
-            console.log("captain")
+
+            let p1 = document.querySelector("#one")
+            let p2 = document.querySelector("#two")
+            let p3 = document.querySelector("#three")
+            let p4 = document.querySelector("#four")
+            let p5 = document.querySelector("#five")
+        
+            p1.addEventListener("click", capSteal)
+            p2.addEventListener("click", capSteal)
+            p3.addEventListener("click", capSteal)
+            p4.addEventListener("click", capSteal)
+            p5.addEventListener("click", capSteal)
             break;
         case "assassin":
             if (gameStart == false) {
